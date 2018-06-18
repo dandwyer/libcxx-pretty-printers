@@ -1,6 +1,35 @@
+# Register libc++ printers
 python
-import sys 
-sys.path.insert(0, '<path_to_libcxx-pp_src_dir>') 
-from libcxx.v1.printers import register_libcxx_printers 
-register_libcxx_printers (None) 
+sys.path.insert(0, '<path_to_libcxx-pp_src_dir>')
+from libcxx.v1.printers import register_libcxx_printers
+register_libcxx_printers (None)
 end
+
+# Set verbose printing of informational messages
+set verbose on
+
+# When pretty printing fails, get a full stack trace to pinpoint error
+set python print-stack full
+
+# Print nested data structures on the command line in a multiline human
+#  readable format
+set print pretty on
+
+# Limit number of elements (characters or container iterations) that will be
+#  printed to the command line. Note that this seems to be ignored by the
+#  IDE "Variables" windows
+set print elements 80
+
+# When (not if) pretty printing fails you and causes GDB to time out, you may
+#  need to uncomment this line to aid corrective action troubleshooting.
+#  Troubleshooting steps could include:
+#  * Disable pretty printing here
+#  * Break the debugger at the same point you were timing out before
+#  * Manually enable pretty printer within the Momentix "Debugger Console"
+#    with "enable pretty-printer"
+#  * Perform "info locals" within the Momentix "Debugger Console" and observe
+#    timeout before offending local variable
+#  * Use "print /r <variable>" and compare to python printer to figure out how
+#    to resolve the issue
+#disable pretty-printer
+
